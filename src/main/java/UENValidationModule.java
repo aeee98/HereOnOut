@@ -68,7 +68,7 @@ public class UENValidationModule {
                     }
                 }
                 //Step 3: Check if the "entity code" is in the list.
-                String codeToCheck = uen.substring(3,5).toUpperCase();
+                String codeToCheck = uen.substring(3,5);
                 if (!validEntityCodes.contains(codeToCheck)) {
                     return false;
                 }
