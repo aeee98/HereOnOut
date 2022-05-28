@@ -5,7 +5,7 @@ public class OneST {
     public void run() {
         while (true) {
             System.out.println("Welcome to One ST, please select an option\n");
-            System.out.println("1) Validation of Unique UEN of company.");
+            System.out.println("1) Validation of UEN of company.");
             System.out.println("2) Weather Forecast of Singapore");
             System.out.println("-1) Exit");
             int option = sc.nextInt();

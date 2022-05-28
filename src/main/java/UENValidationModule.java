@@ -1,6 +1,13 @@
+import java.util.Calendar;
 import java.util.Scanner;
+import java.util.TimeZone;
 
 public class UENValidationModule {
+    //Valid entity codes for new-type UEN
+    private final String[] validEntityCodes = {"LP", "LL", "FC", "PF", "RF", "MQ", "MM","NB", "CC", "CS", "MB","FM",
+            "GS","DP","CP","NR", "CM", "CD", "MD", "HS", "VH", "CH", "MH", "CL", "XL", "CX", "HC", "RP",
+            "TU", "TC", "FB", "FN", "PA", "PB", "SS", "MC", "SM", "GA", "GB"};
+
     public void run(Scanner sc) {
         System.out.println("==UEN Validation ==");
 
@@ -18,9 +25,9 @@ public class UENValidationModule {
         System.out.println("Type in a UEN to check if it is valid");
         String toCheck = sc.nextLine();
         if (validUEN(toCheck)) {
-            System.out.println(toCheck + " is a valid UEN.");
+            System.out.println(toCheck + " is a correctly formatted UEN.");
         } else {
-            System.out.println(toCheck + " is an invalid UEN.");
+            System.out.println(toCheck + " is an incorrectly formatted UEN.");
         }
     }
 
@@ -31,6 +38,7 @@ public class UENValidationModule {
      * @return true if uen is valid, false otherwise.
      */
     public boolean validUEN(String uen) {
+        int year = Calendar.getInstance(TimeZone.getTimeZone("Asia/Singapore")).get(Calendar.YEAR);
         if (uen.length() == 9) {
             //Check the first 8 characters and ensure it is a digit.
             for (int i = 0; i < 8; i++) {
@@ -44,10 +52,19 @@ public class UENValidationModule {
             //Check if new or old
             if (uen.charAt(0) == 'R' || uen.charAt(0) == 'S' || uen.charAt(0) == 'T') {
                 //Handle new UEN
-                return true;
+
+                return Character.isLetter(uen.charAt(9));
             } else {
-                //Handle old UEN
-                return true;
+                //Handle old 10-digit format UEN
+                //Step 1: Check if all except for last character is a digit.
+                for (int i = 0; i < 9; i++) {
+                    if (!Character.isDigit(uen.charAt(i))) {
+                        return false;
+                    }
+                }
+                //Step 2: Check if the year is correct
+
+                return Character.isLetter(uen.charAt(9));
             }
         } else { // UEN must be 9 or 10 digits long.
             return false;
