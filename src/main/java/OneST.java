@@ -24,7 +24,7 @@ public class OneST {
                     break;
             }
         }
-        System.out.println("Thank you for using OneST");
+        System.out.println("Thank you for using OneST.");
     }
 
 }
