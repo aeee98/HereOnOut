@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class OneST {
     Scanner sc = new Scanner(System.in);
+    UENValidationModule uen = new UENValidationModule();
+    WeatherForecastModule wf = new WeatherForecastModule();
     public void run() {
         while (true) {
             System.out.println("Welcome to One ST, please select an option\n");
@@ -15,11 +17,9 @@ public class OneST {
             }
             switch (option) {
                 case 1:
-                    UENValidationModule uen = new UENValidationModule();
                     uen.run(sc);
                     break;
                 case 2:
-                    WeatherForecastModule wf = new WeatherForecastModule();
                     wf.run(sc);
                     break;
             }

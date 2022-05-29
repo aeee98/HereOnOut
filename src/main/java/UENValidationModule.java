@@ -14,6 +14,7 @@ public class UENValidationModule {
         System.out.println("==UEN Validation ==");
 
         while (true) {
+            sc.nextLine();
             mainAppFlow(sc);
             System.out.println("Type 1 to continue, or any other number to go back to the main menu.");
             int option = sc.nextInt();
