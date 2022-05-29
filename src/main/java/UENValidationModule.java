@@ -1,4 +1,9 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TimeZone;
 
 public class UENValidationModule {
     //Valid entity codes for new-type UEN
@@ -41,7 +46,7 @@ public class UENValidationModule {
      * @return true if uen is valid, false otherwise
      */
     public boolean validUEN(String input) {
-        String uen = input.toUpperCase();
+        String uen = input;
         int currentYear = Calendar.getInstance(TimeZone.getTimeZone("Asia/Singapore")).get(Calendar.YEAR);
         if (uen.length() == 9) {
             //Check the first 8 characters and ensure it is a digit.
